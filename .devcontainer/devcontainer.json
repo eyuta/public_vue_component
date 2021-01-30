@@ -15,7 +15,13 @@
 
 	// Add the IDs of extensions you want installed when the container is created.
 	// Note that some extensions may not work in Alpine Linux. See https://aka.ms/vscode-remote/linux.
-	"extensions": [],
+	"extensions": [
+		"octref.vetur",
+		"sdras.vue-vscode-snippets",
+		"davidanson.vscode-markdownlint",
+		"yzhang.markdown-all-in-one",
+		"wmaurer.change-case"
+	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
