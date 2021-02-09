@@ -1,17 +1,31 @@
 {
   "name": "v2-app",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.4",
+  "main": "dist/my-component.umd.js",
+  "module": "dist/my-component.esm.js",
+  "unpkg": "dist/my-component.min.js",
+  "types": "src/types.d.ts",
+  "files": [
+    "index.js",
+    "dist",
+    "src/types.d.ts"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "build": "yarn build:umd & yarn build:es & yarn build:unpkg",
+    "build:umd": "rollup --config rollup.config.js --format umd --file dist/my-component.umd.js",
+    "build:es": "rollup --config rollup.config.js --format es --file dist/my-component.esm.js",
+    "build:unpkg": "rollup --config rollup.config.js --format iife --file dist/my-component.min.js"
   },
   "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^2.6.11"
   },
   "devDependencies": {
+    "@rollup/plugin-buble": "^0.21.3",
+    "@rollup/plugin-commonjs": "^17.1.0",
+    "@rollup/plugin-typescript": "^8.1.1",
     "@typescript-eslint/eslint-plugin": "^2.33.0",
     "@typescript-eslint/parser": "^2.33.0",
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -24,6 +38,8 @@
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-vue": "^6.2.2",
     "prettier": "^1.19.1",
+    "rollup": "^2.38.1",
+    "rollup-plugin-vue": "5.0.0",
     "typescript": "~3.9.3",
     "vue-template-compiler": "^2.6.11"
   }
